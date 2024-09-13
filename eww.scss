@@ -1,0 +1,111 @@
+* {
+  all: unset;
+}
+
+tooltip {
+  background-color: black;
+}
+
+.upper {
+  padding: 10px;
+}
+
+.clock {
+  background-color: #1c1c1c;
+  border-radius: 22px;
+  padding: 9px 41px 0px 41px;
+  margin-right: 15px;
+}
+
+.hour,
+.minutes {
+  font-family: SF Pro Display;
+  color: #fafafa;
+  font-size: 53;
+  font-weight: bold;
+  margin: -7px;
+}
+
+.minutes {
+  margin-bottom: -19px;
+}
+
+.calendar {
+  background-color: #fafafa;
+  border-radius: 22px;
+  margin-right: 15px;
+}
+
+.header {
+  background-color: red;
+  border-radius: 22px 22px 0px 0px;
+  font-size: 20;
+}
+
+.date,
+.month,
+.day {
+  font-family: SF Pro Display;
+  color: #1c1c1c;
+}
+
+.date {
+  margin-top: -3px;
+  font-size: 65;
+  font-weight: 300;
+}
+
+.month {
+  margin-top: -7px;
+  font-size: 12;
+  font-weight: bold;
+}
+
+.day {
+  margin-top: 5px;
+  font-size: 14;
+  color: red;
+  font-weight: bold;
+}
+
+.battery {
+  background-color: #fafafa;
+  border-radius: 22px;
+  margin-top: 15px;
+}
+
+.details {
+  margin: 15px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+.progress {
+  color: #03c03c;
+  margin-left: 28px;
+  margin-right: -13px;
+}
+
+.gap {
+  font-family: SF Pro Display;
+  color: #1c1c1c;
+  font-size: 12;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.host,
+.laptop {
+  font-family: SF Pro Display;
+  color: #1c1c1c;
+  font-size: 20;
+  font-weight: bold;
+  margin-left: -20px;
+}
+
+.laptop {
+  font-weight: 300;
+  margin-top: -2px;
+  margin-left: -43px;
+  margin-bottom: 25px;
+}

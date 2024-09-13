@@ -1,0 +1,192 @@
+(
+	defwindow widgets
+    :monitor 0
+    :geometry (
+		geometry 
+		:x "27px"
+		:y "23px"
+	    :anchor "top left"
+	)
+    :stacking "bg"
+	:exclusive "false"
+	:focusable "false"
+  	(widget)
+)
+
+(
+    defwidget widget []
+    (
+        box
+        :class "upper"
+		:orientation "vertical"
+		:space-evenly "false"
+		:width "60px"
+		:height "60px"
+		(
+			box
+			:halign "start"
+			:valign "center"
+			:orientation "horizontal"
+			(clock)
+            (cal)
+		)
+        (
+			box
+			:halign "start"
+			:valign "center"
+			:orientation "horizontal"
+            (bat)
+		)
+	)
+)
+
+(
+	defwidget clock[]
+	(
+		box
+		:class "clock"
+		:visible "true"
+		:orientation "vertical"
+		:space-evenly "false"
+		(
+			box
+			:class "hour"
+			"${hour}"
+		)
+		(
+			box
+			:class "minutes"
+			"${minutes}"
+		)
+		(
+			image
+			:image-width 65
+			:path "/home/pratik/.config/eww/assets/nike.png"
+		)
+	)
+)
+
+(
+	defwidget cal[]
+	(
+		box
+		:class "calendar"
+		:visible "true"
+		:orientation "vertical"
+		:space-evenly "false"
+        (
+          box
+          :class "header"
+          " "
+        )
+		(
+			box
+			:class "date"
+			"${date}"
+		)
+		(
+			box
+			:class "month"
+			"${month}"
+		)
+		(
+			box
+			:class "day"
+			"${day}"
+		)
+	)
+)
+
+(
+    defwidget bat[]
+    (
+        box
+		:class "battery"
+		:visible "true"
+		:orientation "vertical"
+		:space-evenly "false"
+        (
+            box
+            :class "details"
+            :orientation "horizontal"
+            :space-evenly "false"
+            (
+                image
+                :image-width 52
+                :path "/home/pratik/.config/eww/assets/laptop.png"
+            )
+            (
+                circular-progress
+                :class "progress"
+                :value battery
+                :thickness 3
+                :clockwise true
+                :start-at 30
+                (
+                    box
+                    :class "gap"
+                    "${bat_val}"
+                )
+            )
+        )
+        (
+            box
+            :class "host"
+            "${hostname}"
+        )
+        (
+            box
+            :class "laptop"
+            "Laptop"
+        )
+    )
+)
+
+(
+	defpoll hour 
+	:interval "1s"  
+	"date \"+%k\""
+)
+
+(
+	defpoll minutes
+	:interval "1s"
+	"date \"+%M\""
+)
+
+(
+	defpoll date
+	:interval "10h"
+	"date \"+%e\""
+)
+
+(
+    defpoll month
+    :interval "10h"
+    "date \"+%B\" | awk '{print toupper($0)}'"
+)
+
+(
+    defpoll day
+    :interval "10h"
+    "date \"+%A\" | awk '{print toupper($0)}'"
+)
+
+(
+    defpoll bat_val
+    :interval "5m"
+    "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\""
+)
+
+(
+    defpoll battery
+    :interval "5m"
+    "cat /sys/class/power_supply/BAT1/capacity"
+)
+
+(
+    defpoll hostname
+    :interval "24h"
+    "hostname | awk '{print toupper(substr($0,0,1))tolower(substr($0,2))}'
+"
+)
